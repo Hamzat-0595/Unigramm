@@ -16,4 +16,5 @@ export type postState = {
   posts: IPosts[];
   isLoadingPosts: boolean;
   editPostId: string;
+  error: string;
 };

@@ -1,0 +1,9 @@
+.homePage {
+  margin: 0 auto;
+  width: 1440px;
+  &__container {
+    width: 935px;
+    display: flex;
+    margin: 0 auto;
+  }
+}

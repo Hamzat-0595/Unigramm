@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getUser, logIn } from "./userActions";
-import { UserState } from "src/types/iUser";
+
+import { UserState } from "src/types/IUser";
 
 const initialState: UserState = {
   user: {
@@ -33,6 +34,7 @@ export const userSlice = createSlice({
     });
     builder.addCase(logIn.rejected, (state) => {
       state.isLoading = false;
+      state.isAuth = false;
     });
 
     builder.addCase(getUser.pending, (state) => {

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { baseService, setToken } from "src/api/baseService";
-import Cookies from "js-cookies";
-import { Ilogin } from "src/types/iUser";
+import Cookies from "js-cookie";
+import { Ilogin } from "src/types/IUser";
 
 export const logIn = createAsyncThunk<
   Ilogin,
@@ -14,6 +14,6 @@ export const logIn = createAsyncThunk<
 });
 
 export const getUser = createAsyncThunk("user/get", async function () {
-  const res = await baseService.post<Ilogin>("/user");
+  const res = await baseService.get<Ilogin>("/user");
   return res.data;
 });

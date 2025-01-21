@@ -4,11 +4,13 @@ import {
   combineReducers,
   configureStore,
 } from "@reduxjs/toolkit";
+
+import postSlice from "./posts/postsActions";
 import userSlice from "./user/userSlice";
 
 const rootReduser = combineReducers({
   user: userSlice,
-  //   posts: postSlice,
+  posts: postSlice,
 });
 export const store = configureStore({
   reducer: rootReduser,

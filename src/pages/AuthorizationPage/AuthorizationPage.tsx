@@ -1,15 +1,17 @@
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./AuthorizationPage.scss";
 import logo from "src/assets/instagram.png";
 import { useState } from "react";
-import { useAppDispatch } from "src/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "src/hooks/hooks";
 import { logIn } from "src/store/user/userActions";
 
 const AuthorizationPage = () => {
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const isAuth = useAppSelector((state) => state.user.isAuth);
+
+  const [username, setUsername] = useState<string>("Khamzat");
+  const [password, setPassword] = useState<string>("123");
   const dispatch = useAppDispatch();
 
   const authorization = async () => {
@@ -28,6 +30,14 @@ const AuthorizationPage = () => {
       authorization();
     }
   };
+
+  console.log({
+    isAuth,
+  });
+
+  if (isAuth) {
+    return <Navigate to={"/"} />;
+  }
 
   return (
     <div className="LoginForm">
