@@ -9,7 +9,11 @@ import search from "src/assets/search.png";
 
 import "./Header.scss";
 
-const Header = () => {
+interface IHeaderProps {
+  toggleModalActive: () => void;
+}
+
+const Header = ({ toggleModalActive }: IHeaderProps) => {
   return (
     <div className="header">
       <div className="header__size">
@@ -21,7 +25,7 @@ const Header = () => {
         <div className="picture__wrapper">
           <img className="picture _home" src={home} />
           <img className="picture _msg" src={msg} />
-          <button className="picture__btn">
+          <button className="picture__btn" onClick={toggleModalActive}>
             <img className="picture _add" src={add} />
           </button>
           <img className="picture _trends" src={trends} />

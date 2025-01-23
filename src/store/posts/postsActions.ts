@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getPosts } from "./postsSlice";
+import { addPosts, getPosts } from "./postsSlice";
 import { postState } from "src/types/IPosts";
 
 const initialState: postState = {
@@ -23,6 +23,18 @@ export const postSlice = createSlice({
       state.posts = action.payload;
     });
     builder.addCase(getPosts.rejected, (state, action) => {
+      state.isLoadingPosts = false;
+      state.error = action.error.message ?? "";
+    });
+
+    builder.addCase(addPosts.pending, (state) => {
+      state.isLoadingPosts = true;
+    });
+    builder.addCase(addPosts.fulfilled, (state, action) => {
+      state.isLoadingPosts = false;
+      state.posts.unshift(action.payload);
+    });
+    builder.addCase(addPosts.rejected, (state, action) => {
       state.isLoadingPosts = false;
       state.error = action.error.message ?? "";
     });

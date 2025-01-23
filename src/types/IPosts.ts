@@ -1,4 +1,4 @@
-export interface IPosts {
+export interface IPost {
   _id: string;
   description: string;
   comments: string[];
@@ -13,7 +13,7 @@ export interface IPosts {
 }
 
 export type postState = {
-  posts: IPosts[];
+  posts: IPost[];
   isLoadingPosts: boolean;
   editPostId: string;
   error: string;
