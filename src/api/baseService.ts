@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-export const baseURL = "https://unigram-39h3.onrender.com";
+export const baseURL = "";
 
 export const baseService = axios.create({
   baseURL,
