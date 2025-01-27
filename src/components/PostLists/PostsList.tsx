@@ -22,7 +22,9 @@ const PostsList = () => {
     <div className="container">
       <div className="navbar">
         {posts.map((post) => (
-          <PostItem {...post} />
+          <div>
+            <PostItem {...post} />
+          </div>
         ))}
       </div>
     </div>

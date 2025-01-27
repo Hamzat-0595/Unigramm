@@ -7,12 +7,20 @@ export const getPosts = createAsyncThunk("user/getPosts", async () => {
   return response.data;
 });
 
-export const addPosts = createAsyncThunk<IPost, Pick<IPost, "description">>(
+export const addPost = createAsyncThunk<IPost, Pick<IPost, "description">>(
   "users/addPosts",
   async (arg) => {
     const response = await baseService.post("/posts", {
       description: arg.description,
     });
     return response.data;
+  }
+);
+
+export const deletePost = createAsyncThunk<string, Pick<IPost, "_id">>(
+  "users/deletePost",
+  async (arg) => {
+    await baseService.delete(`/posts/${arg._id}`);
+    return arg._id;
   }
 );

@@ -5,8 +5,15 @@ import Share from "src/assets/postActions/share.png";
 import Emojis from "src/assets/postActions/emojis.png";
 import { IPost } from "src/types/IPosts";
 import "./PostItem.scss";
+import { useState } from "react";
+import EditDeleteWindow from "../PostLists/EditDeleteWindow";
 
-const PostItem = ({ description, likes, image, user }: IPost) => {
+const PostItem = ({ description, likes, image, user, _id }: IPost) => {
+  const [BtnActive, setBtnActive] = useState(false);
+
+  const toggleBtnActive = () => {
+    setBtnActive(!BtnActive);
+  };
   return (
     <div className="container">
       <div className="posts">
@@ -15,7 +22,7 @@ const PostItem = ({ description, likes, image, user }: IPost) => {
             <img className="posts__img" src={image} />
             <div className="posts__name">{user.username}</div>
           </div>
-          <button className="posts__btn">
+          <button className="posts__btn" onClick={toggleBtnActive}>
             <div className="posts__dots"></div>
             <div className="posts__dots"></div>
             <div className="posts__dots"></div>
@@ -58,6 +65,7 @@ const PostItem = ({ description, likes, image, user }: IPost) => {
         />
         <button className="posts__add">Post</button>
       </div>
+      {BtnActive && <EditDeleteWindow id={_id} />}
     </div>
   );
 };

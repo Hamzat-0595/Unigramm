@@ -3,8 +3,16 @@ import Arrow from "src/assets/Arrow 1.png";
 
 interface IModalActiveSecondProps {
   setActiveModalPrev: () => void;
+  imageUrl: string;
+  handleAddPost: () => void;
+  onChangeInput: (e: React.FormEvent<HTMLInputElement>) => void;
 }
-const ModalActiveSecond = ({ setActiveModalPrev }: IModalActiveSecondProps) => {
+const ModalActiveSecond = ({
+  setActiveModalPrev,
+  imageUrl,
+  handleAddPost,
+  onChangeInput,
+}: IModalActiveSecondProps) => {
   return (
     <div className="modalActiveSecond">
       <div className="modalActiveSecond__wrapper">
@@ -16,21 +24,24 @@ const ModalActiveSecond = ({ setActiveModalPrev }: IModalActiveSecondProps) => {
             <img src={Arrow} />
           </button>
           <div className="modalActiveSecond__title">Создание публикации</div>
-          <button className="modalActiveSecond__btnAdd">Поделиться</button>
+          <button className="modalActiveSecond__btnAdd" onClick={handleAddPost}>
+            Поделиться
+          </button>
         </div>
         <div className="modalActiveSecond__bottom">
           <div>
-            <img className="modalActiveSecond__addImg" />
+            <img className="modalActiveSecond__addImg" src={imageUrl} />
           </div>
           <div className="modalActiveSecond__container">
             <div className="modalActiveSecond__user">
               <img className="modalActiveSecond__userImg" />
-              <div className="modalActiveSecond__userName">hamza</div>
+              <div className="modalActiveSecond__userName">Khamzat</div>
             </div>
-            <input
+            <textarea
               className="modalActiveSecond__input"
               placeholder="Добавьте подпись..."
-            ></input>
+              onChange={onChangeInput}
+            ></textarea>
           </div>
         </div>
       </div>

@@ -16,12 +16,10 @@ const HomePage = () => {
   return (
     <div className="homePage">
       <Header toggleModalActive={toggleModalActive} />
-
       {modalActive && <ModalWindow toggleModalActive={toggleModalActive} />}
       <div className="homePage__container">
-        <div>
-          <PostsList />
-        </div>
+        <PostsList />
+
         <Recommendations />
       </div>
     </div>

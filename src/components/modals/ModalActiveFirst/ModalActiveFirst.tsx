@@ -1,9 +1,13 @@
 import "./ModalActiveFirst.scss";
 interface IModalActiveFirstProps {
   setActiveModalNext: () => void;
+  handleFileChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const ModalActiveFirst = ({ setActiveModalNext }: IModalActiveFirstProps) => {
+const ModalActiveFirst = ({
+  setActiveModalNext,
+  handleFileChange,
+}: IModalActiveFirstProps) => {
   return (
     <div className="modalActiveFirst">
       <div className="modalActiveFirst__wrapper">
@@ -20,7 +24,12 @@ const ModalActiveFirst = ({ setActiveModalNext }: IModalActiveFirstProps) => {
           <div className="modalActiveFirst__text">
             Перетащите сюда фото и видео
           </div>
-          <input type="file" id="real-input" hidden />
+          <input
+            type="file"
+            id="real-input"
+            hidden
+            onChange={handleFileChange}
+          />
           <label
             htmlFor="real-input"
             className="modalActiveFirst__imgFromComputer"
